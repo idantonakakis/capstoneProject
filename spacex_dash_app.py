@@ -67,9 +67,9 @@ def get_pie_chart(entered_site):
                                   title = 'Total Success Launches By Site')
         return fig
     else:
-        filtered_df = spacex_df[spacex_df['Launch Site'] == 'CCAFS LC-40'].groupby('class')[['class']].count().rename(columns = {'class':'count'}).reset_index()
+        filtered_df = spacex_df[spacex_df['Launch Site'] == entered_site].groupby('class')[['class']].count().rename(columns = {'class':'count'}).reset_index()
         # return the outcomes piechart for a selected site
-        fig = px.pie(filtered_df, values = 'class', 
+        fig = px.pie(filtered_df, values = 'count', 
                                   names = 'class', 
                                   title = 'Total Success Launches for {} site'.format(entered_site))
         return fig
